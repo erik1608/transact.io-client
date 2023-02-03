@@ -1,0 +1,50 @@
+<div class="card pb-4">
+    <div class="card-body">
+        <h5 class="card-title">Registration</h5>
+        <p class="card-text">Please create your account</p>
+        <div class="container pb-4">
+            <div class="row flex-column align-items-center">
+                <form id="reg-form">
+                    <div class="form-group mb-2">
+                        <label for="firstname">Firstname</label>
+                        <input type="text" class="form-control" id="firstname" placeholder="Enter your firstname" required>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="lastname">Lastname</label>
+                        <input type="text" class="form-control" id="lastname" placeholder="Enter your lastname" required>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="date-of-birth">Date of birth</label>
+                        <input type="date" class="form-control" id="date-of-birth" value="2001-08-16" required>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="username-reg">Username</label>
+                        <input type="text" class="form-control" id="username-reg" placeholder="Enter username" required>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="phoneNumber">Phone number</label>
+                        <input type="tel" class="form-control" id="phoneNumber" aria-describedby="phoneHelp" placeholder="Enter phone number" required>
+                        <small id="phoneHelp" class="form-text text-muted">We'll never share your phone number with anyone else.</small>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password" required>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="password-confirm">Confirm the password</label>
+                        <input type="password" class="form-control" id="password-confirm" placeholder="Confirm the password" required>
+                    </div>
+                    <div class="d-flex justify-content-center mt-3">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <h6 class="card-subtitle mb-2 text-muted">Already have an account? <a href="#" id="login-link" class="card-link">Login</a></h6>
+    </div>
+</div>

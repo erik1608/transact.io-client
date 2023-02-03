@@ -1,0 +1,30 @@
+<div class="card">
+    <div class="card-body">
+        <form action="#" id="transaction-details">
+            <div class="form-group row mb-2">
+                <label for="amount-input" class="col-sm-2 col-form-label col-form-label-sm">Amount</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control form-control-sm" id="amount-input" placeholder="Transaction amount">
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                <label for="recipient-account-number" class="col-sm-2 col-form-label col-form-label-sm">Recipient account number</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control form-control-sm" id="recipient-account-number" placeholder="Recipient account number">
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                <label for="outgoing-account-number-select" class="col-sm-2 col-form-label col-form-label-sm">Outgoing account number</label>
+                <div class="col-sm-10">
+                    <select class="form-select my-1 mr-sm-2" id="outgoing-account-number-select">
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary my-1">Submit</button>
+        </form>
+    </div>
+</div>
+
+<template id="out-account-number-option-template">
+    <option class="acc-number"></option>
+</template>

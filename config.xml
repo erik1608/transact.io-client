@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.snee.transact.io" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>Transact.IO Android Client</name>
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <universal-links>
+        <host name="alexa.pysnippet.org" scheme="https">
+            <path url="*" event="alexaLinkageEvent" />
+        </host>
+    </universal-links>
+    <platform name="android">
+        <preference name="StatusBarOverlaysWebView" value="false" />
+        <preference name="AndroidInsecureFileModeEnabled" value="true" />
+        <preference name="android-minSdkVersion" value="23" />
+        <preference name="android-targetSdkVersion" value="31" />
+        <preference name="android-compileSdkVersion" value="31" />
+        <preference name="DisallowOverscroll" value="false"/>
+        <preference name="AndroidXEnabled" value="true" />
+        <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest">
+            <manifest xmlns:tools="http://schemas.android.com/tools" />
+        </edit-config>
+        <edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/uses-permission">
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+        </edit-config>
+        <resource-file src="google-services.json" target="app/google-services.json" />
+        <resource-file src="google-services.json" target="google-services.json" />
+        <config-file parent="/manifest/application" target="app/src/main/AndroidManifest.xml">
+            <meta-data
+                    android:name="com.google.firebase.messaging.default_notification_color"
+                    android:resource="@android:color/darker_gray"/>
+        </config-file>
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <application android:usesCleartextTraffic="true" />
+        </edit-config>
+        <config-file parent="/manifest/application" target="app/src/main/AndroidManifest.xml">
+            <meta-data
+                    android:name="com.google.firebase.messaging.default_notification_icon"
+                    android:resource="@drawable/ic_cdv_splashscreen"/>
+        </config-file>
+    </platform>
+</widget>

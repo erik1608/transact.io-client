@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row mb-2">
+        <div class="col-12 text-left d-flex flex-row" style="align-items: end;">
+            <button class="btn btn-primary">Add <i class="bi bi-plus-square"></i></button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered bg-white text-dark" id="accounts-table">
+                <tr>
+                    <th scope="col">Account name</th>
+                    <th scope="col">Number</th>
+                    <th scope="col">Balance</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<template id="account-template">
+    <tr>
+        <th class="account-name"></th>
+        <th class="account-number" style="-webkit-user-select: auto !important; -khtml-user-select: auto !important; -moz-user-select: auto !important; -ms-user-select: auto !important; -o-user-select: auto !important; user-select: auto !important;"></th>
+        <th class="account-balance"></th>
+    </tr>
+</template>

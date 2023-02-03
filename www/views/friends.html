@@ -1,0 +1,111 @@
+<div class="container">
+  <div class="row d-flex flex-row align-items-start">
+    <div class="col-12">
+      <button class="btn btn-primary" id="add-friend"><i class="bi bi-person-plus"></i> Add a friend</button>
+    </div>
+  </div>
+  <!-- Friends Section -->
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row mb-2">
+          <div class="col-sm-12 col-12">
+            <h2>Friends</h2>
+          </div>
+        </div>
+      </div>
+      <table class="pt-2 table table-bordered table-light">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Alias</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="friends-table-body">
+        </tbody>
+        <tbody id="friends-table-empty-body" style="display: none;">
+          <tr>
+            <td colspan="3" scope="col">
+              No friends to display.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Friend Requests Section -->
+  <div class="table-responsive" id="friend-requests">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row mb-2">
+          <div class="col-sm-12 col-12"><h2>Friend Requests</h2></div>
+        </div>
+      </div>
+      <table class="table table-bordered table-light">
+        <thead>
+        <tr>
+          <th>Username</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody id="friend-requests-table-body">
+        </tbody>
+        <tbody id="friend-requests-empty-table-body" style="display: none;">
+          <tr>
+            <td colspan="2" scope="col">
+              No new friend requests.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<template id="friend-row-template">
+  <tr>
+    <td class="name"></td>
+    <td class="alias"><!-- Alias intial to firstname --></td>
+    <td>
+      <a class="edit" title="" data-toggle="tooltip" data-original-title="Edit"><i class="bi bi-wrench-adjustable"></i></a>
+      <a class="delete" title="" data-toggle="tooltip" data-original-title="Delete"><i class="bi bi-trash-fill"></i></a>
+    </td>
+  </tr>
+</template>
+
+<template id="friend-request-row-template">
+  <tr>
+    <td class="name"></td>
+    <td>
+      <a class="accept" title="" data-toggle="tooltip" data-original-title="Accept"><i class="bi bi-check-lg"></i></a>
+      <a class="decline" title="" data-toggle="tooltip" data-original-title="Decline"><i class="bi bi-x-square"></i></a>
+    </td>
+  </tr>
+</template>
+
+<div class="modal fade" id="friendRequestModal" tabindex="-1" role="dialog" aria-labelledby="friendRequestModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="friendRequestModalLabel">Send a friend request</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="at-mark">@</span>
+          </div>
+          <input id="friend-request-username" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="at-mark">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="friend-request-modal-close" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="friend-request-modal-add" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+  </div>
+</div>

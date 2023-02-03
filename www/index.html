@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi, viewport-fit=cover" />
+        <meta name="color-scheme" content="light dark">
+        <link href="./css/plugin/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/plugin/bootstrap-icons-1.10.2/bootstrap-icons.css">
+        <title>Transactions Demo</title>
+    </head>
+    <body>
+        <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light w-100" style="display: none;">
+            <div class="container-fluid">
+                <div class="row text-center">
+                    <h3 class="text-dark">Welcome!</h3>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggler">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-current="page" href="#">Signed in as <span id="username"></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" onclick="gController.loadTab(TAB_MAIN)" href="#"><i class="bi bi-house"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" onclick="gController.loadTab(TAB_ACCOUNTS)" href="#"><i class="bi bi-info-circle"></i> Accounts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" onclick="gController.loadTab(TAB_TRANSACTION)" href="#"><i class="bi bi-arrow-down-up"></i> Transaction</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" onclick="gController.loadTab(TAB_SETTINGS)" href="#"><i class="bi bi-wrench"></i> Settings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" onclick="gController.loadTab(TAB_FRIENDS)" href="#"><i class="bi bi-universal-access"></i> Associated users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="logout" onclick="gController.logout()" class="nav-link" href="#"><i class="bi bi-indent"></i> Sign out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="app">
+            <div id="content">
+            </div>
+        </div>
+        <div class="modal modal-fullscreen fade" id="transactionDetailsModal" aria-hidden="true" aria-labelledby="transactionDetailsModalLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="transactionDetailsModalLabel">Transaction <span id="transactionId"></span> details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table id="detailsTable" class="table table-bordered">
+                            <tr>
+                                <th>Sender</th>
+                                <th>Account</th>
+                                <th>Credits</th>
+                            </tr>
+                            <tr>
+                                <td style="overflow-wrap: anywhere" id="senderAccount"></td>
+                                <td style="overflow-wrap: anywhere" id="receivedTo"></td>
+                                <td style="overflow-wrap: anywhere" id="amount"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal modal-fullscreen fade" id="userConsentModal" aria-hidden="true" aria-labelledby="userConsentModalLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="userConsentModalLabel">Allow <span class="oauth-client-name"></span> to access your account details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div>The <span class="oauth-client-name"></span> will be able to access your user information</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" id="consent-allowed" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Allow</button>
+                        <button class="btn btn-danger" id="consent-declined" data-bs-toggle="modal" data-bs-dismiss="modal">Decline</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal modal-fullscreen fade" id="externalUserMapping" aria-hidden="true" aria-labelledby="externalUserMappingLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="externalUserMappingLabel">Add a mapping for the easy access to user account</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-flex flex-column">
+                            <div>
+                                <label for="mapping-account-number">The account number to add</label>
+                                <input type="text" id="mapping-account-number">
+                            </div>
+                            <div>
+                                <label for="mapping-account-alias">The account number to add</label>
+                                <input type="text" id="mapping-account-alias">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" id="perform-mapping" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Add</button>
+                        <button class="btn btn-danger" id="cancel-mapping" data-bs-toggle="modal" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="./js/plugin/jquery-3.6.1.min.js"></script>
+        <script src="./js/plugin/popper.min.js"></script>
+        <script src="./js/plugin/bootstrap.min.js"></script>
+        <script src="cordova.js"></script>
+        <script src="js/rest-client.js"></script>
+        <script src="js/urls.js"></script>
+        <script src="js/constants.js"></script>
+        <script src="js/crypto.js"></script>
+        <script src="js/oauth2.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>

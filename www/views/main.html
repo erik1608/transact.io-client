@@ -1,0 +1,37 @@
+<div class="container bg-transparent">
+    <div class="row text-center d-flex flex-column bg-transparent justify-content-evenly">
+        <div class="card my-1" style="width: 18rem;">
+            <div class="card-body">
+                <h6 class="card-title"><i class="bi bi-info-circle"></i></h6>
+                <h5 class="card-title">Accounts</h5>
+                <p class="card-text">List of the accounts</p>
+                <a href="#" id="accounts-show" onclick="gController.loadAccountsView()" class="btn btn-primary">Open</a>
+            </div>
+        </div>
+        <div class="card my-1" style="width: 18rem;">
+            <div class="card-body">
+                <h6 class="card-title"><i class="bi bi-arrow-down-up"></i></h6>
+                <h5 class="card-title">Make a transaction</h5>
+                <p class="card-text">Perform a transaction</p>
+                <a href="#" id="transaction-show" onclick="gController.loadTransactionView()" class="btn btn-primary">Open</a>
+            </div>
+        </div>
+        <div class="card my-2" style="width: 18rem;">
+            <div class="card-body">
+                <h6 class="card-title"><i class="bi bi-wrench"></i></h6>
+                <h5 class="card-title">Settings</h5>
+                <p class="card-text">Control your account</p>
+                <a href="#" class="btn btn-primary" onclick="gController.loadSettingsView()">Open</a>
+            </div>
+        </div>
+        <div class="card my-2" style="width: 18rem;">
+            <div class="card-body">
+                <h6 class="card-title"><i class="bi bi-universal-access"></i></h6>
+                <h5 class="card-title">Associated users</h5>
+                <p class="card-text">Control users associated with you</p>
+                <a href="#" class="btn btn-primary" onclick="gController.loadAssociationView()">Open</a>
+            </div>
+        </div>
+    </div>
+</div>
+
